@@ -1,0 +1,17 @@
+{
+  "buildId": "starter-vanilla",
+  "name": "Starter Vanilla",
+  "description": "Минимальная vanilla сборка для теста",
+  "mcVersion": "1.20.1",
+  "loader": {"type":"vanilla","version":""},
+  "java": {"major":17,"minRamMb":1024,"maxRamMb":3072},
+  "files": [
+    {
+      "path": "client.jar",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0,
+      "url": "https://example.com/some/client.jar"
+    }
+  ],
+  "meta": {"icon":"icon.png","screenshots":["s1.png"], "changelog":"Initial"}
+}

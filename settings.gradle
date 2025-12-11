@@ -1,0 +1,2 @@
+rootProject.name = 'aureate-launcher'
+include 'launcher-core', 'launcher-client', 'launcher-server'

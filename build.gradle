@@ -1,0 +1,26 @@
+plugins {
+id 'java'
+}
+
+
+allprojects {
+group = 'com.aureate'
+version = '1.0.0'
+
+
+apply plugin: 'java'
+
+
+repositories {
+mavenCentral()
+}
+}
+
+
+subprojects {
+tasks.withType(JavaCompile) {
+options.encoding = 'UTF-8'
+sourceCompatibility = '17'
+targetCompatibility = '17'
+}
+}
