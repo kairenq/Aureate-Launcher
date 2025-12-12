@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml">
+<top>
+<Label text="Aureate Launcher" style="-fx-font-size: 24px; -fx-padding: 10;" />
+</top>
+
+
+<center>
+<VBox spacing="12" alignment="CENTER">
+<Button text="Обновить сборку" fx:id="updateButton" />
+<Button text="Запустить игру" fx:id="playButton" />
+<Label text="Статус: готов" fx:id="statusLabel" />
+</VBox>
+</center>
+</BorderPane>

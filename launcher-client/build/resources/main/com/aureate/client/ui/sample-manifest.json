@@ -1,0 +1,13 @@
+{
+  "buildId": "test-build",
+  "version": "1.0.0",
+  "loader": { "type": "vanilla", "version": "1.20.1" },
+  "files": [
+    {
+      "path": "bin/test.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0,
+      "url": "https://raw.githubusercontent.com/github/gitignore/main/Java.gitignore"
+    }
+  ]
+}
