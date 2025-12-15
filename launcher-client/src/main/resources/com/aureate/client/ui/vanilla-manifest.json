@@ -1,0 +1,13 @@
+{
+  "buildId": "vanilla-1.20.1",
+  "version": "1.20.1",
+  "loader": { "type": "vanilla", "version": "1.20.1" },
+  "files": [
+    {
+      "path": "client.jar",
+      "sha256": "affbdc2a83b7d656b98cb2f77f6c33e8ce8221919ea1a50d803b19647588f07d",
+      "size": 123,
+      "url": "https://raw.githubusercontent.com/github/gitignore/main/Java.gitignore"
+    }
+  ]
+}

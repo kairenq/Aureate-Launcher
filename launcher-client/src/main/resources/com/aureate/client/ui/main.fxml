@@ -1,19 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
 
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aureate.client.MainController">
+    <!-- Верхнее меню -->
+    <top>
+        <HBox spacing="20" alignment="CENTER_LEFT" style="-fx-background-color: #2c3e50; -fx-padding: 10;">
+            <Label text="Aureate Launcher" style="-fx-font-size: 18px; -fx-text-fill: white; -fx-font-weight: bold;" />
+            <TabPane fx:id="mainTabPane" style="-fx-background-color: #34495e;">
+                <Tab text="Главная" closable="false">
+                    <VBox spacing="20" alignment="CENTER" style="-fx-padding: 20;">
+                        <Label text="Добро пожаловать в Aureate Launcher!" style="-fx-font-size: 24px; -fx-font-weight: bold;" />
+                        <Label text="Лучший лаунчер для Minecraft с уникальными сборками и функциями." style="-fx-font-size: 14px;" />
+                        <HBox spacing="20" alignment="CENTER">
+                            <VBox alignment="CENTER" spacing="5">
+                                <ImageView fitWidth="50" fitHeight="50">
+                                    <Image url="https://img.icons8.com/color/48/telegram-app.png" />
+                                </ImageView>
+                                <Label text="Telegram" />
+                            </VBox>
+                            <VBox alignment="CENTER" spacing="5">
+                                <ImageView fitWidth="50" fitHeight="50">
+                                    <Image url="https://img.icons8.com/color/48/discord-logo.png" />
+                                </ImageView>
+                                <Label text="Discord" />
+                            </VBox>
+                            <VBox alignment="CENTER" spacing="5">
+                                <ImageView fitWidth="50" fitHeight="50">
+                                    <Image url="https://img.icons8.com/color/48/boosty.png" />
+                                </ImageView>
+                                <Label text="Boosty" />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+                </Tab>
+                <Tab text="Сборки" closable="false">
+                    <VBox spacing="10" style="-fx-padding: 20;">
+                        <Label text="Доступные сборки:" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                        <ListView fx:id="buildsListView" />
+                        <HBox spacing="10" alignment="CENTER">
+                            <Button text="Обновить выбранную сборку" fx:id="updateBuildButton" />
+                            <Button text="Запустить игру" fx:id="launchGameButton" />
+                        </HBox>
+                        <ProgressBar fx:id="downloadProgressBar" prefWidth="300" visible="false" />
+                        <Label fx:id="statusLabel" text="Статус: готов" />
+                    </VBox>
+                </Tab>
+                <Tab text="Настройки" closable="false">
+                    <VBox spacing="10" style="-fx-padding: 20;">
+                        <Label text="Настройки лаунчера" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+                        <CheckBox text="Автоматическое обновление" />
+                        <CheckBox text="Показывать уведомления" />
+                        <Button text="Сохранить" />
+                    </VBox>
+                </Tab>
+            </TabPane>
+        </HBox>
+    </top>
 
-<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml">
-<top>
-<Label text="Aureate Launcher" style="-fx-font-size: 24px; -fx-padding: 10;" />
-</top>
-
-
-<center>
-<VBox spacing="12" alignment="CENTER">
-<Button text="Обновить сборку" fx:id="updateButton" />
-<Button text="Запустить игру" fx:id="playButton" />
-<Label text="Статус: готов" fx:id="statusLabel" />
-</VBox>
-</center>
+    <!-- Правая панель профиля -->
+    <right>
+        <VBox spacing="10" alignment="CENTER" style="-fx-background-color: #ecf0f1; -fx-padding: 20; -fx-pref-width: 200;">
+            <Label text="Профиль" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+            <ImageView fitWidth="80" fitHeight="80" style="-fx-background-color: gray;">
+                <!-- Placeholder для аватарки -->
+            </ImageView>
+            <Label text="Игрок" />
+            <Button text="Выйти" />
+        </VBox>
+    </right>
 </BorderPane>

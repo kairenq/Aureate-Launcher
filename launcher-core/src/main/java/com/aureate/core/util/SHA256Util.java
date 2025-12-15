@@ -8,7 +8,7 @@ import java.security.MessageDigest;
 
 public class SHA256Util {
     public static String sha256(Path path) throws Exception {
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        MessageDigest md = MessageDigest.getInstance("SHA-1");
         try (InputStream is = Files.newInputStream(path);
              DigestInputStream dis = new DigestInputStream(is, md)) {
             byte[] buffer = new byte[8192];

@@ -11,6 +11,64 @@ public class BuildManifest {
     private JavaInfo java;
     private List<FileEntry> files;
     private Meta meta;
+    private String mainClass;
+    private List<Library> libraries;
+    private AssetIndex assetIndex;
+    private VersionDownloads downloads;
+
+    // For version list
+    public String id;
+    public String url;
+
+    // Existing classes...
+
+    public static class Library {
+        private String name;
+        private Downloads downloads;
+        // Add rules if needed
+        public String getName() { return name; }
+        public Downloads getDownloads() { return downloads; }
+    }
+
+    public static class Downloads {
+        private Artifact artifact;
+        private java.util.Map<String, Artifact> classifiers;
+        public Artifact getArtifact() { return artifact; }
+        public java.util.Map<String, Artifact> getClassifiers() { return classifiers; }
+    }
+
+    public static class Artifact {
+        private String url;
+        private String sha1;
+        private long size;
+        public String getUrl() { return url; }
+        public String getSha1() { return sha1; }
+        public long getSize() { return size; }
+    }
+
+    public static class VersionDownloads {
+        private Artifact client;
+        private Artifact server;
+        public Artifact getClient() { return client; }
+        public Artifact getServer() { return server; }
+    }
+
+    public static class AssetIndex {
+        private String id;
+        private String url;
+        private String sha1;
+        private long size;
+        public String getId() { return id; }
+        public String getUrl() { return url; }
+        public String getSha1() { return sha1; }
+        public long getSize() { return size; }
+    }
+
+    // Getters
+    public String getMainClass() { return mainClass; }
+    public List<Library> getLibraries() { return libraries; }
+    public AssetIndex getAssetIndex() { return assetIndex; }
+    public VersionDownloads getDownloads() { return downloads; }
 
     public static class JavaInfo {
         private int major;
@@ -67,11 +125,6 @@ public class BuildManifest {
 
     @Override
     public String toString() {
-        return "BuildManifest{" +
-                "buildId='" + buildId + '\'' +
-                ", name='" + name + '\'' +
-                ", mcVersion='" + mcVersion + '\'' +
-                ", files=" + (files != null ? files.size() : 0) +
-                '}';
+        return "Vanilla " + id;
     }
 }
