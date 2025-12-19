@@ -1,0 +1,26 @@
+[
+  {
+    "id": "Skydustry",
+    "name": "Skydustry",
+    "version": "v0.0.2",
+    "minecraft": "1.20.1",
+    "modloader": "forge",
+    "icon": "https://raw.githubusercontent.com/kairenq/Aureate-Launcher/main/program_info/prismlauncher.ico",
+    "summary": "Skydustry - 1.20.1 Forge pack",
+    "description": "Skydustry — сборка на базе Forge для Minecraft 1.20.1.",
+    "download_url": "https://github.com/kairenq/Aureate-Launcher/releases/download/v0.0.2/Skydustry.zip",
+    "size": 0
+  },
+  {
+    "id": "Draconica",
+    "name": "Draconica",
+    "version": "v0.0.1",
+    "minecraft": "1.18.2",
+    "modloader": "forge",
+    "icon": "https://raw.githubusercontent.com/kairenq/Aureate-Launcher/main/program_info/prismlauncher.ico",
+    "summary": "Draconica - 1.18.2 Forge pack",
+    "description": "Draconica — сборка на базе Forge для Minecraft 1.18.2.",
+    "download_url": "https://github.com/kairenq/Aureate-Launcher/releases/download/v0.0.1/Draconica.zip",
+    "size": 0
+  }
+]

@@ -792,6 +792,8 @@ SET(LAUNCHER_SOURCES
     VersionProxyModel.cpp
     Markdown.h
     Markdown.cpp
+    BuildsManager.h
+    BuildsManager.cpp
 
     # Super secret!
     KonamiCode.h
@@ -941,6 +943,10 @@ SET(LAUNCHER_SOURCES
     ui/pages/global/ProxyPage.h
     ui/pages/global/APIPage.cpp
     ui/pages/global/APIPage.h
+    ui/pages/global/BuildsPage.cpp
+    ui/pages/global/BuildsPage.h
+    ui/pages/global/BuildDetailPage.cpp
+    ui/pages/global/BuildDetailPage.h
 
     # GUI - platform pages
     ui/pages/modplatform/CustomPage.cpp
@@ -1171,6 +1177,8 @@ qt_wrap_ui(LAUNCHER_UI
     ui/pages/global/APIPage.ui
     ui/pages/global/ProxyPage.ui
     ui/pages/global/MinecraftPage.ui
+    ui/pages/global/BuildsPage.ui
+    ui/pages/global/BuildDetailPage.ui
     ui/pages/global/ExternalToolsPage.ui
     ui/pages/instance/ExternalResourcesPage.ui
     ui/pages/instance/NotesPage.ui

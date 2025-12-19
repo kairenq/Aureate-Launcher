@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>BuildDetailPage</class>
+ <widget class="QWidget" name="BuildDetailPage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="titleLabel">
+     <property name="text">
+      <string>Build</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTextEdit" name="descriptionText">
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="buttonLayout">
+     <item>
+      <widget class="QPushButton" name="downloadBtn">
+       <property name="text">
+        <string>Download</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="launchBtn">
+       <property name="text">
+        <string>Launch</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
