@@ -5,6 +5,13 @@
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QCoreApplication>
+#include <QFileInfo>
+#include <QDir>
+#include <QStandardPaths>
+
+#include "net/Download.h"
+#include "MMCZip.h"
+#include "Application.h"
 
 BuildsManager *BuildsManager::s_instance = nullptr;
 
@@ -58,4 +65,66 @@ void BuildsManager::loadFromFile(const QString &path)
         }
     }
     emit buildsUpdated();
+}
+
+void BuildsManager::downloadBuild(const QString &id)
+{
+    // find build
+    QJsonObject build;
+    bool found = false;
+    for (const auto &b : m_builds) {
+        if (b.value("id").toString() == id) { build = b; found = true; break; }
+    }
+    if (!found) {
+        emit downloadFailed(id, tr("Build not found"));
+        return;
+    }
+
+    QString url = build.value("download_url").toString();
+    if (url.isEmpty()) {
+        emit downloadFailed(id, tr("No download URL"));
+        return;
+    }
+
+    // determine downloads dir
+    QString downloadsDir = APPLICATION->settings()->get("DownloadsDir").toString();
+    if (downloadsDir.isEmpty()) {
+        downloadsDir = QStandardPaths::writableLocation(QStandardPaths::DownloadLocation);
+        if (downloadsDir.isEmpty()) downloadsDir = QCoreApplication::applicationDirPath();
+    }
+    QDir().mkpath(downloadsDir);
+
+    QString fileName = QFileInfo(QUrl(url).path()).fileName();
+    if (fileName.isEmpty()) fileName = id + ".zip";
+    QString outPath = QDir(downloadsDir).filePath(fileName);
+
+    auto dl = Net::Download::makeFile(QUrl(url), outPath);
+
+    connect(dl.get(), &Net::Task::progress, this, [this, id](qint64 cur, qint64 tot) {
+        emit downloadProgress(id, cur, tot);
+    });
+    connect(dl.get(), &Net::Task::succeeded, this, [this, id, outPath]() {
+        // start extraction to instances dir
+        QString instDir = APPLICATION->settings()->get("InstanceDir").toString();
+        if (instDir.isEmpty()) instDir = QCoreApplication::applicationDirPath() + "/instances";
+        QDir().mkpath(instDir);
+
+        // extract into instance named by id
+        QString target = QDir(instDir).filePath(id);
+        QDir().mkpath(target);
+
+        auto extract = new MMCZip::ExtractZipTask(outPath, QDir(target));
+        connect(extract, &MMCZip::ExtractZipTask::succeeded, this, [this, id, outPath, target]() {
+            emit downloadFinished(id, outPath);
+        });
+        connect(extract, &MMCZip::ExtractZipTask::failed, this, [this, id](QString reason) {
+            emit downloadFailed(id, reason);
+        });
+        extract->start();
+    });
+    connect(dl.get(), &Net::Task::failed, this, [this, id](QString reason) {
+        emit downloadFailed(id, reason);
+    });
+
+    dl->start();
 }
